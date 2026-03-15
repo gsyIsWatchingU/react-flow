@@ -1,5 +1,5 @@
 {
-  "buildCommand": "pnpm --filter @react-flow/web build",
+  "buildCommand": "pnpm --filter @react-flow/shared-types build && pnpm --filter @react-flow/web build",
   "outputDirectory": "apps/web/dist",
   "installCommand": "pnpm install",
   "framework": "vite",
