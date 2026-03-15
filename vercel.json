@@ -2,7 +2,7 @@
   "buildCommand": "pnpm --filter @react-flow/web build",
   "outputDirectory": "apps/web/dist",
   "installCommand": "pnpm install",
-  "rootDirectory": ".",
+  "root": ".",
   "framework": "vite",
   "rewrites": [
     {
