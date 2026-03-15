@@ -1,7 +1,13 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "cd apps/web && pnpm install && pnpm build",
+  "buildCommand": "pnpm --filter @react-flow/web build",
   "outputDirectory": "apps/web/dist",
+  "installCommand": "pnpm install",
+  "rootDirectory": ".",
   "framework": "vite",
-  "installCommand": "pnpm install"
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "https://react-flow-server.onrender.com/api/$1"
+    }
+  ]
 }
