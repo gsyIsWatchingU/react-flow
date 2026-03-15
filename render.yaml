@@ -3,6 +3,7 @@ services:
     name: react-flow-server
     runtime: node
     plan: free
+    rootDir: apps/server
     buildCommand: npm install && npx prisma generate && npm run build
     startCommand: npm start
     envVars:
