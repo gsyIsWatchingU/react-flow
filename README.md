@@ -141,7 +141,7 @@ react-flow/
 └── README.md
 ```
 
-## 🎯 项目重难点（值得学习的地方）
+## 🎯 项目重难点
 
 ### 1. react-use Hooks 实战应用
 
