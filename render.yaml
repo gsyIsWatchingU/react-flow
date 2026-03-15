@@ -3,9 +3,9 @@ services:
     name: react-flow-server
     runtime: node
     plan: free
-    rootDir: apps/server
-    buildCommand: npm install && npx prisma generate && npm run build
-    startCommand: npm start
+    rootDir: .
+    buildCommand: pnpm install && pnpm --filter @react-flow/server exec npx prisma generate && pnpm --filter @react-flow/server build
+    startCommand: pnpm --filter @react-flow/server start
     envVars:
       - key: NODE_ENV
         value: production
