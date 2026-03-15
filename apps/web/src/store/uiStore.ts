@@ -12,7 +12,7 @@ interface UiStore {
   toggleDarkMode: () => void;
 }
 
-export const useUiStore = create<UiStore>((set, get) => ({
+export const useUiStore = create<UiStore>((set) => ({
   notifications: [],
   sidebarOpen: true,
   darkMode: false,

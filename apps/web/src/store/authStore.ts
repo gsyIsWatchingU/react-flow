@@ -11,14 +11,14 @@ interface AuthStore {
   setUser: (user: User | null) => void;
 }
 
-export const useAuthStore = create<AuthStore>((set, get) => ({
+export const useAuthStore = create<AuthStore>((set) => ({
   user: null,
   token: localStorage.getItem('token'),
   isAuthenticated: !!localStorage.getItem('token'),
 
   login: async (credentials: LoginRequest) => {
     const response = await api.post<LoginResponse>('/auth/login', credentials);
-    const { user, token, refreshToken } = response.data;
+    const { user, token, refreshToken } = response as unknown as LoginResponse;
     
     localStorage.setItem('token', token);
     localStorage.setItem('refreshToken', refreshToken);

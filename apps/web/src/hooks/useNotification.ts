@@ -23,16 +23,23 @@ export const useNotification = () => {
     };
   }, [user?.id]);
 
-  const handleNotification = (notification: Notification) => {
+  const handleCustomEvent = (event: Event) => {
+    const customEvent = event as CustomEvent<Notification>;
+    if (customEvent.detail) {
+      addNotification(customEvent.detail);
+    }
+  };
+
+  const handleWebSocketNotification = (notification: Notification) => {
     addNotification(notification);
   };
 
-  useEvent('notification', handleNotification, window);
+  useEvent('notification', handleCustomEvent, window);
 
   useEffect(() => {
-    wsClient.onNotification(handleNotification);
+    wsClient.onNotification(handleWebSocketNotification);
     return () => {
-      wsClient.offNotification(handleNotification);
+      wsClient.offNotification(handleWebSocketNotification);
     };
   }, []);
 

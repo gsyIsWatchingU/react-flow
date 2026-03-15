@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useThrottleFn } from 'react-use';
 import InfiniteList from '../components/InfiniteList/InfiniteList';
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 
@@ -25,19 +24,12 @@ const DashboardPage: React.FC = () => {
     hasMore: true
   });
 
-  const throttledScroll = useThrottleFn(
-    (e: Event) => {
-      if (e && e.target) {
-        const target = e.target as HTMLElement;
-        setScrollPosition(target.scrollTop);
-      }
-    },
-    200
-  );
-
   const handleScroll = useCallback((e: Event) => {
-    throttledScroll.run(e);
-  }, [throttledScroll]);
+    if (e && e.target) {
+      const target = e.target as HTMLElement;
+      setScrollPosition((target as any).scrollTop || 0);
+    }
+  }, []);
 
   useEffect(() => {
     const container = document.querySelector('.main-content');

@@ -14,7 +14,7 @@ const AdminPage: React.FC = () => {
       return [];
     }
     const response = await api.get<User[]>('/users');
-    return response.data;
+    return response as unknown as User[];
   }, [isAdmin]);
 
   return (

@@ -27,7 +27,7 @@ export const useSearch = () => {
     };
 
     const response = await api.get<SearchResponse>('/search', { params });
-    return response.data;
+    return response as unknown as SearchResponse;
   }, [debouncedQuery]);
 
   return {

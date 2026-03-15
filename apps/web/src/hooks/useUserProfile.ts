@@ -13,13 +13,12 @@ export const useUserProfile = (userId?: string) => {
     }
 
     const response = await api.get<User>(`/users/${targetUserId}`);
-    return response.data;
+    return response as unknown as User;
   }, [targetUserId]);
 
   return {
     profile: profileAsync.value,
     loading: profileAsync.loading,
-    error: profileAsync.error,
-    refresh: profileAsync.retry
+    error: profileAsync.error
   };
 };

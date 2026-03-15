@@ -25,7 +25,7 @@ export const usePermission = () => {
   const [role] = useLocalStorage<Role>('userRole', Role.GUEST);
 
   const checkPermission = (permission: Permission): boolean => {
-    const userRole = user?.role || role;
+    const userRole = user?.role || role || Role.GUEST;
     return hasPermission(userRole, permission);
   };
 

@@ -1,7 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
-import { ApiResponse } from '@react-flow/shared-types';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
+const API_BASE_URL = (import.meta as any).env.VITE_API_URL || '/api';
 
 const apiClient: AxiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -34,11 +33,11 @@ apiClient.interceptors.response.use(
 );
 
 export const api = {
-  get: <T = any>(url: string, config?: any) => apiClient.get<ApiResponse<T>>(url, config),
-  post: <T = any>(url: string, data?: any, config?: any) => apiClient.post<ApiResponse<T>>(url, data, config),
-  put: <T = any>(url: string, data?: any, config?: any) => apiClient.put<ApiResponse<T>>(url, data, config),
-  patch: <T = any>(url: string, data?: any, config?: any) => apiClient.patch<ApiResponse<T>>(url, data, config),
-  delete: <T = any>(url: string, config?: any) => apiClient.delete<ApiResponse<T>>(url, config)
+  get: <T = any>(url: string, config?: any) => apiClient.get<T>(url, config),
+  post: <T = any>(url: string, data?: any, config?: any) => apiClient.post<T>(url, data, config),
+  put: <T = any>(url: string, data?: any, config?: any) => apiClient.put<T>(url, data, config),
+  patch: <T = any>(url: string, data?: any, config?: any) => apiClient.patch<T>(url, data, config),
+  delete: <T = any>(url: string, config?: any) => apiClient.delete<T>(url, config)
 };
 
 export default apiClient;
