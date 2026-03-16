@@ -39,6 +39,11 @@ export const useAuthStore = create<AuthStore>((set) => ({
 }));
 
 const savedUser = localStorage.getItem('user');
-if (savedUser) {
-  useAuthStore.getState().setUser(JSON.parse(savedUser));
+if (savedUser && savedUser !== 'undefined' && savedUser !== 'null') {
+  try {
+    useAuthStore.getState().setUser(JSON.parse(savedUser));
+  } catch (error) {
+    console.error('Failed to parse user from localStorage:', error);
+    localStorage.removeItem('user');
+  }
 }
