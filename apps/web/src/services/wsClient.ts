@@ -1,10 +1,13 @@
 import { io, Socket } from 'socket.io-client';
 import { Notification } from '@react-flow/shared-types';
 
+const API_BASE_URL = (import.meta as any).env.VITE_API_URL || '/api';
+const WS_BASE_URL = API_BASE_URL.replace('/api', '');
+
 class WsClient {
   private socket: Socket | null = null;
 
-  connect(url: string = 'http://localhost:3089') {
+  connect(url: string = WS_BASE_URL) {
     if (this.socket?.connected) {
       return;
     }
