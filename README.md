@@ -309,7 +309,3 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
 3. **后看后端** - 理解前后端如何配合
 4. **动手实践** - 修改代码，观察效果
 5. **深入研究** - 查看 react-use 源码，理解实现原理
-
-## 📄 License
-
-MIT
